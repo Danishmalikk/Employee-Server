@@ -1,11 +1,11 @@
 const mongoose = require('mongoose')
 
-const EmployeeSchema = new mongoose.Schema({ 
+const UserSchema = new mongoose.Schema({ 
     name : { 
         type : String, 
         require: true
     },
-    adress : { 
+    address : { 
         type : String, 
         require: true
     }, 
@@ -14,10 +14,6 @@ const EmployeeSchema = new mongoose.Schema({
         require: true,
         unique : true        
     }, 
-    password : { 
-        type : String, 
-        require: true
-    },
     mobile_no : { 
         type : String, 
         require: true,
@@ -26,10 +22,46 @@ const EmployeeSchema = new mongoose.Schema({
     qualification : { 
         type: String, 
         require : true
-    }
-    
+    },
+    hashedPassword : { 
+        type : String,
+        require : true
+    },
+    token: String
 })
 
-const EmployeeModel = mongoose.model('EmployeeModel', EmployeeSchema)
+const EmployeeSchema = new mongoose.Schema({ 
+    firstName: { 
+        type: String,
+        require : true,
+    }, 
+    lastName: { 
+        type: String,
+    }, 
+    qualification: { 
+        type: String,
+        require : true,
+    }, 
+    address: { 
+        type: String,
+        require : true,
+    }, 
+    email: { 
+        type: String,
+        require : true,
+    }, 
+    mobile_no: { 
+        type: String,
+        require : true,
+    }, 
+    experience: { 
+        type: String,
+        require : true,
+    }, 
 
-module.exports = EmployeeModel; 
+})
+
+const userModel = mongoose.model('userModel', UserSchema)
+const employeeModel = mongoose.model('employeeModel', EmployeeSchema)
+
+module.exports = { userModel, employeeModel }; 
